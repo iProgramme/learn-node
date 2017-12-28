@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ball{
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            margin-left: 0px;
+        }
+        .ball1{
+            background-color: red;
+        }
+        .ball2{
+            background-color: yellow;
+        }
+        .ball3{
+            background-color: black;
+        }
+    </style>
+    <script src="../node_modules/bluebird/js/browser/bluebird.min.js"></script>
+</head>
+<body>
+<div class="ball ball1" style="margin-left: 0px;"></div>
+<div class="ball ball2" style="margin-left: 0px;"></div>
+<div class="ball ball3" style="margin-left: 0px;"></div>
+</body>
+<script>
+    var ball1 = document.querySelector('.ball1')
+    var ball2 = document.querySelector('.ball2')
+    var ball3 = document.querySelector('.ball3')
+    var promise = window.Promise
+    function Panimate(ball,distance){
+        return new promise((resole,reject)=>{
+            function animate(){
+                setTimeout(()=>{
+                    var Mleft = parseInt(ball.style.marginLeft,10)
+                    if(Mleft == distance){
+                        resole()
+                    }else{
+                        if(Mleft < distance){
+                            Mleft++
+                        }else{
+                            Mleft--
+                        }
+                        ball.style.marginLeft = Mleft + 'px'
+                        animate()
+                    }
+                },10)
+
+            }
+            animate()
+        })
+    }
+    Panimate(ball1,300)
+        .then(()=>{
+            return Panimate(ball2,600)
+        })
+        .then(()=>{
+            return Panimate(ball3,900)
+        })
+        .then(()=>{
+            return Panimate(ball3,500)
+        })
+        .then(()=>{
+            return Panimate(ball2,500)
+        })
+        .then(()=>{
+            return Panimate(ball1,500)
+        })
+</script>
+</html>
