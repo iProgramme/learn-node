@@ -38,5 +38,14 @@
 <script type="text/javascript">
 	var inp = document.querySelector("input");
 	inp.focus()
+	var app = new Promise((res)=>{
+		setTimeout(()=>{
+			res('这个是异步之后的输出值')
+		},2000)
+	})
+	app.then((data)=>{
+		console.log(data)
+	})
+//	console.log(Promise)
 </script>
 </html>
