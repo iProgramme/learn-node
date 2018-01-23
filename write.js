@@ -1,5 +1,5 @@
 var fs = require('fs');
-var data = '22222222 ';
+var data = '66666 ';
 
 // var reader = fs.createReadStream('三国.html')
 

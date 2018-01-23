@@ -8,6 +8,7 @@
 <body>
 	<input type="text" name="">
 	<input type="date" name="">
+	<input type="number" name="" maxlength="5" minlength="0" class="input">
 	<select>
 		<option>lkhjvj</option>
 		<option>lkhjvj</option>
@@ -34,9 +35,13 @@
 		<option>lkhjvj</option>
 		<option>lkhjvj</option>
 	</select>
+	<input type="file" name="" class="file">
+	<button class="button">查看信息</button>
 </body>
 <script type="text/javascript">
-	var inp = document.querySelector("input");
+	var inp = document.querySelector(".input");
+	var file = document.querySelector(".file");
+	var button = document.querySelector(".button");
 	inp.focus()
 	var app = new Promise((res)=>{
 		setTimeout(()=>{
@@ -46,6 +51,14 @@
 	app.then((data)=>{
 		console.log(data)
 	})
+	var flag = 0
+	var app1 = {}
+	var app2 = {}
+	button.onclick = function () {
+		console.log(file.files)
+		
+
+	}
 //	console.log(Promise)
 </script>
 </html>
