@@ -241,6 +241,7 @@
 	一份祝福，一份真诚，在这个特别的日子里，中银国际证券祝您生日快乐、家庭幸福、万事如意！【中银国际】
 	个股推荐：600845宝信软件，融资标的。国内领先的工业软件解决方案提供商，云服务+智能制造与IDC双轮推进打造行业标杆。仅供参考。我部推出由每周精选短线个股首席分析师领衔打造多款带参考价服务产品，满足不同投资风格客户资产配置需求。详询您专属客户经理投资顾问。【中银国际】
 	个股跟踪：本周一推荐的600845宝信软件，获利已超过14%，建议卖出了结。仅供参考。恭祝各位投资者新春快乐！我部推出由每周精选短线个股首席分析师领衔打造多款带参考价服务产品，满足不同投资风格客户资产配置需求。详询您专属客户经理投资顾问。【中银国际】
+	个股推荐：300431暴风集团，去年转型互联网电视业务营收同比增长超过 40%。未来TV业务或整体注入；002176江特电机，融资标的，碳酸锂产能逐步释放，2018将成公司业绩占比最大板块。一季报利润预告大增。仅供参考。我部推出由每周精选短线个股首席分析师领衔打造多款带参考价服务产品，满足不同投资风格客户资产配置需求。详询您专属客户经理投资顾问。【中银国际】
 `;
 // str.replace("",'6')
 
@@ -323,9 +324,18 @@ for (var i = 0; i < arr.length; i++) {
 	
 }
 console.log(arrEnd)
+for (var i = 0; i < arrEnd.length; i++) {
+	if (arrEnd[i].type == "个股跟踪") {
+		for (var j = 0; j < i; j++) {
+			if (arrEnd[j].code+'' == arrEnd[i].code+'') {
+				arrEnd[i].bgcolor = 'red'
+			}
+		}
+	}
+}
 var htmlArr = []
 for (var i = 0; i < arrEnd.length; i++) {
-	var html = `<tr style="background:${arrEnd[i].type == "个股跟踪" ? 'red':'yellow'};"><td>${arrEnd[i].time}</td><td>${arrEnd[i].code}</td><td style="white-space:nowrap">${arrEnd[i].type}</td><td>${arrEnd[i].name}</td><td>${arrEnd[i].price}</td><td>${arrEnd[i].message}</td></tr>`
+	var html = `<tr style="background:${arrEnd[i].bgcolor ? 'red':'yellow'};"><td>${arrEnd[i].time}</td><td>${arrEnd[i].code}</td><td style="white-space:nowrap">${arrEnd[i].type}</td><td>${arrEnd[i].name}</td><td>${arrEnd[i].price}</td><td>${arrEnd[i].message}</td></tr>`
 	htmlArr.push(html)
 }
 // htmlArr.join("")
