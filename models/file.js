@@ -8,7 +8,7 @@ exports.getAllDirectory = (req,res)=>{
         (function inter(i){
             if(i == files.length){
                 console.log(arr);
-                return
+                return arr
             }
             fs.stat('./uploads/'+files[i],(err,status)=>{
                 if(status.isDirectory()){
@@ -18,5 +18,5 @@ exports.getAllDirectory = (req,res)=>{
             })
         })(0)
     })
-    return ["相册1","相册2","相册3","相册4"]
+    // return ["相册1","相册2","相册3","相册4"]
 }

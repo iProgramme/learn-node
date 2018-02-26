@@ -2,7 +2,7 @@
 var file = require('../models/file.js');
 exports.showIndex = (req,res)=>{
     res.render('index',{
-        "arr":file.getAllDirectory()
+        "arr":file.getAllDirectory()||[]
     })
 }
 // 显示个人相册页
